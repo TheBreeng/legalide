@@ -1,0 +1,133 @@
+// Заголовки, общие БЄМ блоки и проче...
+
+// Основной шрифт задан в style.scss
+
+$inputFontFamily: 'Montserrat', sans-serif;
+
+%hFontStyles {
+    font-family: 'Martel', serif;
+    color: $hFontColor;
+    font-weight: 700;
+}
+
+@mixin flex($jc: center, $fd: row, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    flex-direction: $fd;
+    align-items: $ai;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+    @extend %hFontStyles;
+}
+h1 {
+    @include adaptiveValue('font-size', 58, 40);
+    font-weight: 900;
+    line-height: 65px;
+}
+h2 {
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+}
+h3 {
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+}
+h4 {
+    font-family: $inputFontFamily;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: $mainColor;
+}
+h5 {
+    font-size: 16px;
+    line-height: 24px;
+}
+h6 {
+    font-family: $fontFamily;
+    font-weight: 700;
+    font-size: $fontSize;
+    line-height: 24px;
+    color: $mainColor;
+}
+p {
+    line-height: 20px;
+    font-size: $fontSize;
+}
+a {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: 600;
+}
+
+input,
+textarea {
+    font-family: $inputFontFamily;
+    font-size: $fontSize;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    color: $mainColor;
+}
+
+input[type='submit'],
+input[type='reset'] {
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+button {
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: $fontSize;
+    letter-spacing: 0.2px;
+    position: relative;
+
+    &:hover {
+        &::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+    }
+}
+
+section:not(:first-child) {
+    @include adaptiveValue('padding-bottom', 100, 50);
+    @include adaptiveValue('padding-top', 100, 50);
+}
+
+.tittle-wrapper {
+    @include flex($fd: column);
+    text-align: center;
+
+    p {
+        margin: 15px 0 80px;
+    }
+}
+.content-wrapper {
+    @include flex($jc: space-between);
+
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+[class*='__container'] {
+    @media (max-width: $tablet) {
+        padding: 0 40px;
+    }
+}

@@ -1,0 +1,366 @@
+.home {
+    background: url(@img/home/home-cover.png) no-repeat;
+    background-size: cover;
+    height: 785px;
+
+    @media (max-width: $tablet) {
+        height: auto;
+        background: url(@img/home/mobile-cover.png) no-repeat;
+        background-size: cover;
+    }
+
+    &__container {
+        @include flex;
+        height: 100%;
+
+        @media (max-width: $tablet) {
+            padding: 0;
+        }
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+    }
+
+    &__first-column {
+        width: 509px;
+
+        @media (max-width: $tablet) {
+            width: auto;
+            text-align: center;
+            margin: 65px 0 50px 0;
+            padding: 0 10px;
+        }
+    }
+    &__second-column {
+        @include adaptiveValue('width', 565, 377);
+        align-self: flex-end;
+        padding: 20px 20px 0 0;
+
+        @media (max-width: $mobile) {
+            padding: 20px;
+            align-self: center;
+        }
+    }
+
+    h4 {
+        margin: 35px 0 45px;
+    }
+
+    &__btns {
+        button {
+            height: 48px;
+            border-radius: 37px;
+            margin-bottom: 10px;
+
+            @media (max-width: $tablet) {
+                margin-bottom: 20px;
+            }
+        }
+        .get-now {
+            width: 182px;
+            background: $secondaryColor;
+            color: #fff;
+            margin-right: 10px;
+
+            @media (max-width: $tablet) {
+                margin-right: 0;
+            }
+
+            &:hover {
+                &::before {
+                    background: #fff;
+                }
+            }
+        }
+        .learn-more {
+            width: 155px;
+            border: 1px solid $secondaryColor;
+            color: $secondaryColor;
+
+            &:hover {
+                &::before {
+                    background: $secondaryColor;
+                }
+            }
+        }
+        @media (max-width: $tablet) {
+            @include flex($fd: column);
+        }
+    }
+}
+
+.practice-areas {
+    .content-wrapper {
+        div {
+            @include flex($fd: column);
+            width: 328px;
+            min-height: 147px;
+            background: #f9f9f9;
+            box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+            border-radius: 5px;
+            padding: 30px;
+
+            @media (max-width: $tablet) {
+                margin: 15px 0;
+            }
+
+            svg {
+                margin-bottom: 15px;
+            }
+        }
+        div:nth-child(2) {
+            background: #295c7a;
+
+            h5 {
+                color: #fff;
+            }
+        }
+        div:not(:last-child) {
+            @include adaptiveValue('margin-right', 34, 0);
+        }
+    }
+}
+
+.practice-advice {
+    background: #fafafa;
+
+    .content-wrapper {
+        @media (max-width: 1360px) {
+            flex-wrap: wrap;
+        }
+        @media (max-width: $tablet) {
+            justify-content: center;
+        }
+    }
+    .card {
+        @include flex($fd: column);
+        min-height: 321px;
+        width: 230px;
+        background: #fff;
+        margin: 20px;
+
+        &__content {
+            padding: 30px 20px;
+
+            h5 {
+                margin-bottom: 15px;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.about {
+    .content-wrapper {
+        justify-content: space-between;
+
+        @media (max-width: $tablet) {
+            flex-direction: column;
+        }
+    }
+    &__video {
+        %video-size {
+            @include adaptiveValue('width', 597, 333);
+            height: 442px;
+        }
+
+        @include flex;
+        @extend %video-size;
+        @include adaptiveValue('margin-right', 120, 10, 1440, 1215, 2);
+        position: relative;
+
+        .video-cover {
+            @include flex;
+            @extend %video-size;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0) 14.58%,
+                    rgba(56, 56, 56, 0.84) 100%
+                ),
+                url(@img/about/video-cover.png) no-repeat;
+            background-size: cover;
+
+            @media (max-width: $tablet) {
+                background-position: 50%;
+            }
+
+            div {
+                @include flex($jc: center, $fd: column);
+                width: 98px;
+                height: 98px;
+                background-color: #295c7a;
+                border-radius: 50%;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        iframe {
+            @extend %video-size;
+        }
+    }
+    &__content {
+        @include flex($fd: column, $ai: flex-start);
+
+        h2 {
+            @include adaptiveValue('margin-top', 20, 70);
+            text-align: start;
+        }
+        p {
+            margin: 10px 0 50px;
+        }
+        svg {
+            margin-right: 20px;
+            align-self: flex-start;
+        }
+
+        & > div {
+            @include flex;
+
+            &:not(:first-child) {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: $tablet) {
+            width: auto;
+        }
+    }
+}
+
+.clients {
+    padding-bottom: 135px !important;
+
+    &__container {
+        @include flex($jc: space-between);
+
+        @media (max-width: $mobile) {
+            flex-direction: column;
+
+            img:not(:last-child) {
+                margin-bottom: 70px;
+                transform: scale(1.5);
+            }
+        }
+    }
+}
+
+.subscribe {
+    background: #252b42;
+    height: 72px;
+    padding: 0 !important;
+
+    &__container {
+        @include flex;
+        transform: translateY(-70px);
+
+        div {
+            @include flex($jc: space-between);
+            @include adaptiveValue('width', 986, 414);
+            height: 124px;
+            background: $backgroundGradient;
+            border-radius: 2px;
+            padding: 30px 50px;
+
+            @media (max-width: $mobile) {
+                flex-direction: column;
+                height: auto;
+
+                h3 {
+                    margin-bottom: 30px;
+                    text-align: center;
+                }
+            }
+
+            form {
+                @include flex($jc: space-between);
+                padding: 1px;
+                background: #f9f9f9;
+                border-radius: 5px;
+
+                input[type='email'] {
+                    @include adaptiveValue('width', 333, 220);
+                    height: 58px;
+                    padding: 15px 20px;
+                }
+                input[type='submit'] {
+                    height: 58px;
+                    width: 117px;
+                    background: $primaryColor;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.contact {
+    background: #f3f3f3;
+
+    @media (max-width: $mobile) {
+        padding-top: 140px !important;
+    }
+
+    &__content {
+        @include flex;
+
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+
+        div {
+            @include flex($fd: column);
+            width: 328px;
+            height: 333px;
+            background: #fff;
+            padding: 50px 40px;
+
+            svg {
+                margin-bottom: 15px;
+            }
+
+            h5 {
+                margin: 15px 0;
+            }
+            h5,
+            h6 {
+                color: $hFontColor;
+            }
+
+            button {
+                width: 154px;
+                height: 44px;
+                border: 1px solid $primaryColor;
+                color: $primaryColor;
+
+                &:hover {
+                    &::before {
+                        background: $primaryColor;
+                    }
+                }
+            }
+            &:nth-child(2) {
+                background: #252b42;
+                height: 393px;
+
+                h5,
+                h6 {
+                    color: #fff;
+                }
+            }
+
+            @media (max-width: $mobile) {
+                margin-bottom: 70px;
+            }
+        }
+    }
+}
